@@ -6,7 +6,11 @@ public class Sudoku {
     private static boolean isvalid(List<List<String>> sudoku){
         int row,col;
 
+        //Checking for each element range and row-size
         for(row=0;row<9;row++){
+            if(sudoku.get(row).size() != 9){
+                return false;
+            }
             for(col=0;col<9;col++){
                 if(sudoku.get(row).get(col).equals(" ")){
                     continue;
@@ -17,6 +21,9 @@ public class Sudoku {
             }
 
         }
+
+
+        //Checking for row
         for(row=0;row<9;row++){
             Set<String> set = new HashSet<>();
             int blank_count = 0;
@@ -34,7 +41,7 @@ public class Sudoku {
             }
         }
 
-
+        //Checking for col
         for(row=0;row<9;row++){
             Set<String> set = new HashSet<>();
             int blank_count = 0;
@@ -54,7 +61,7 @@ public class Sudoku {
 
         }
 
-        //cell
+        //checking for each cell
         int size_sudoku = 9;
 
         for(row=0;row<size_sudoku;row+=3){
@@ -134,7 +141,6 @@ public class Sudoku {
 */
             for (int i=0;i<9;i++){
             String temp = s.nextLine();
-
             List<String> row = Arrays.asList(temp.split(""));
             sudoku.add(row);
         }
